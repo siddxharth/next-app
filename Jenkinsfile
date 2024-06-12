@@ -14,8 +14,7 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'npm install --save-dev eslint'
-                sh 'npx eslint .'
+                sh 'npm run lint'
             }
         }
         stage('Build') { 
