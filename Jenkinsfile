@@ -1,5 +1,6 @@
 pipeline {
     agent any 
+    tools {nodejs "nodejs"}
     stages {
         stage('Clone') { 
             steps {
@@ -13,7 +14,12 @@ pipeline {
         }
         stage('Build') { 
             steps {
-                sh 'npm build'
+                sh 'npm run build'
+            }
+        }
+        stage('Start Dev') {
+            steps {
+                sh 'npm start' // Runs the previously built code from .next directory
             }
         }
     }
