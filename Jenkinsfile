@@ -12,15 +12,22 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('Lint') {
+            steps {
+                sh 'npm install --save-dev eslint'
+                sh 'npx eslint .'
+            }
+        }
         stage('Build') { 
             steps {
                 sh 'npm run build'
             }
         }
-        stage('Start Dev') {
-            steps {
-                sh 'npm start' // Runs the previously built code from .next directory
-            }
-        }
+        // Optional stage
+        // stage('Start Dev') {
+        //     steps {
+        //         sh 'npm start' // Runs the previously built code from .next directory
+        //     }
+        // }
     }
 }
